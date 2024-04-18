@@ -1,0 +1,14 @@
+---
+- name: Create EC2 Instance
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  vars_files:
+    - /home/ec2-user/sg_task/ansible_playbook/vars.yml
+
+  roles:
+    - security_group
+    - launch_instance
+    - deploy_web_application
+

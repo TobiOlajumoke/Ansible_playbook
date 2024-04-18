@@ -1,0 +1,30 @@
+---
+- name: Create Security Group
+  amazon.aws.ec2_security_group:
+    name: "ansible_security_group"
+    description: "Security Group for Ansible"
+    vpc_id: "{{ vpc_id }}"
+    region: "{{ region }}"  # Make sure to include the region variable here
+    rules:
+      - proto: tcp
+        from_port: 22
+        to_port: 22
+        cidr_ip: "{{ your_ip_address }}/32"
+      - proto: tcp
+        from_port: 80
+        to_port: 80
+        cidr_ip: "{{ your_ip_address }}/32"
+      - proto: tcp
+        from_port: 22
+        to_port: 22
+        cidr_ip: "{{ ansible_server_ip }}/32"
+    rules_egress:
+      - proto: tcp
+        from_port: 443
+        to_port: 443
+        cidr_ip: "0.0.0.0/0"
+      - proto: tcp
+        from_port: 80
+        to_port: 80
+        cidr_ip: "0.0.0.0/0"
+

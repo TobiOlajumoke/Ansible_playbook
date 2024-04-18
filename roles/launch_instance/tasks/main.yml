@@ -1,0 +1,16 @@
+---
+- name: Launch EC2 Instance
+  amazon.aws.ec2_instance:
+    aws_access_key: "{{ aws_access_key }}"
+    aws_secret_key: "{{ aws_secret_key }}"
+    region: "{{ region }}"
+    instance_type: t2.micro
+    image_id: "{{ ami_id }}"
+    vpc_subnet_id: "{{ subnet_id }}"
+    security_group: "ansible_security_group"
+    key_name: "demo"
+    wait: yes
+    count: 1
+    tags:
+      EnvName: "Test Environment"
+
