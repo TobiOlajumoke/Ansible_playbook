@@ -1,0 +1,10 @@
+## Fill this with your credentials
+
+aws_access_key: ""
+aws_secret_key: ""
+region: "1"
+vpc_id: ""
+your_ip_address: ""
+ansible_server_ip: ""
+ami_id: ""
+subnet_id: ""
